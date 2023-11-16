@@ -2,6 +2,12 @@
 function StreamingMedia() {
 }
 
+StreamingMedia.prototype.playAudioForeground = function (url, options) {
+    options = options || {};
+    cordova.exec(options.successCallback || null, options.errorCallback || null, "StreamingMedia", "playAudioForeground", [url, options]);
+};
+
+
 StreamingMedia.prototype.playAudio = function (url, options) {
 	options = options || {};
 	cordova.exec(options.successCallback || null, options.errorCallback || null, "StreamingMedia", "playAudio", [url, options]);

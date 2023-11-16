@@ -1,12 +1,19 @@
 package com.hutchind.cordova.plugins.streamingmedia;
 
 import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.os.Build;
+
+import androidx.core.content.ContextCompat;
+
 import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -47,9 +54,14 @@ public class StreamingMedia extends CordovaPlugin {
 		}
 	}
 
+	private boolean playAudioForeground(String url, JSONObject options) {
+		return play(ForegroundAudioService.class, url, options);
+	}
+
 	private boolean playAudio(String url, JSONObject options) {
 		return play(SimpleAudioStream.class, url, options);
 	}
+
 	private boolean playVideo(String url, JSONObject options) {
 		return play(SimpleVideoStream.class, url, options);
 	}
@@ -84,7 +96,47 @@ public class StreamingMedia extends CordovaPlugin {
 					streamIntent.putExtras(extras);
 				}
 
-				cordovaObj.startActivityForResult(plugin, streamIntent, ACTIVITY_CODE_PLAY_MEDIA);
+				if (activityClass == ForegroundAudioService.class) {
+
+				  final int lState = ForegroundAudioService.getState();
+				  if (lState == MusicConstants.STATE_SERVICE.NOT_INIT) {
+					if (!NetworkHelper.isInternetAvailable(cordovaObj.getActivity().getApplicationContext())) {
+		//              showError(v);
+					  return;
+					}
+					streamIntent.putExtras(extras);
+					streamIntent.setAction(MusicConstants.ACTION.START_ACTION);
+					cordovaObj.getActivity().startService(streamIntent);
+
+				  } else if (lState == MusicConstants.STATE_SERVICE.PREPARE ||
+					lState == MusicConstants.STATE_SERVICE.PLAY) {
+					Intent lPauseIntent = new Intent(cordovaObj.getActivity().getApplicationContext(), ForegroundAudioService.class);
+					lPauseIntent.setAction(MusicConstants.ACTION.PAUSE_ACTION);
+					PendingIntent lPendingPauseIntent = PendingIntent.getService(cordovaObj.getActivity().getApplicationContext(), 0, lPauseIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+					try {
+					  lPendingPauseIntent.send();
+					} catch (PendingIntent.CanceledException e) {
+					  e.printStackTrace();
+					}
+				  } else if (lState == MusicConstants.STATE_SERVICE.PAUSE) {
+					if (!NetworkHelper.isInternetAvailable(cordovaObj.getActivity().getApplicationContext())) {
+		//              showError(v);
+					  return;
+					}
+					Intent lPauseIntent = new Intent(cordovaObj.getActivity().getApplicationContext(), ForegroundAudioService.class);
+					lPauseIntent.setAction(MusicConstants.ACTION.PLAY_ACTION);
+					PendingIntent lPendingPauseIntent = PendingIntent.getService(cordovaObj.getActivity().getApplicationContext(), 0, lPauseIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+					try {
+					  lPendingPauseIntent.send();
+					} catch (PendingIntent.CanceledException e) {
+					  e.printStackTrace();
+					}
+
+				  }
+				} else {
+				  cordovaObj.startActivityForResult(plugin, streamIntent, ACTIVITY_CODE_PLAY_MEDIA);
+				}
+
 			}
 		});
 		return true;
