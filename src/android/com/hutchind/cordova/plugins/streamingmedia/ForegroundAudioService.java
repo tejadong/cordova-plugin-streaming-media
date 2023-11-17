@@ -291,7 +291,7 @@ public class ForegroundAudioService extends Service implements MediaPlayer.OnErr
         lNotificationBuilder
                 .setContent(lRemoteViews)
 //                .setSmallIcon(R.attr.icon)
-                .setSmallIcon(R.mipmap.ic_launcher)
+//                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)
                 .setOnlyAlertOnce(true)
                 .setOngoing(true)
