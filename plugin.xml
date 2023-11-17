@@ -58,9 +58,9 @@
 				<param name="android-package" value="com.hutchind.cordova.plugins.streamingmedia.StreamingMedia" />
 			</feature>
 		</config-file>
-        <resource-file src="src/android/strings.xml" target="res/values/strings.xml" />
 		<config-file target="AndroidManifest.xml" parent="/manifest">
 			<uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 		</config-file>
 		<config-file target="AndroidManifest.xml" parent="/manifest/application">
 			<activity android:configChanges="orientation|screenSize" android:name="com.hutchind.cordova.plugins.streamingmedia.SimpleAudioStream" android:label="Simple Audio Stream"></activity>
@@ -73,6 +73,16 @@
 		<source-file src="src/android/com/hutchind/cordova/plugins/streamingmedia/SimpleVideoStream.java" target-dir="src/com/hutchind/cordova/plugins/streamingmedia" />
 		<source-file src="src/android/com/hutchind/cordova/plugins/streamingmedia/StreamingMedia.java" target-dir="src/com/hutchind/cordova/plugins/streamingmedia" />
 		<source-file src="src/android/com/hutchind/cordova/plugins/streamingmedia/ImageLoadTask.java" target-dir="src/com/hutchind/cordova/plugins/streamingmedia" />
+
+		<resource-file src="src/android/res/drawable/circle_button_sound_notif_shape.xml" target="res/drawable/circle_button_sound_notif_shape.xml" />
+		<resource-file src="src/android/res/drawable-v21/circle_button_sound_notif_shape.xml" target="res/drawable-v21/circle_button_sound_notif_shape.xml" />
+		<resource-file src="src/android/res/drawable-xxhdpi/ic_close_white.png" target="res/drawable-xxhdpi/ic_close_white.png" />
+		<resource-file src="src/android/res/drawable-xxhdpi/ic_pause_white.png" target="res/drawable-xxhdpi/ic_pause_white.png" />
+		<resource-file src="src/android/res/drawable-xxhdpi/ic_play_arrow_white.png" target="res/drawable-xxhdpi/ic_play_arrow_white.png" />
+		<resource-file src="src/android/res/layout/radio_notification.png" target="res/layout/radio_notification.png" />
+		<resource-file src="src/android/res/values/strings.xml" target="res/values/strings.xml" />
+		<resource-file src="src/android/res/values/colors.xml" target="res/values/colors.xml" />
+		<resource-file src="src/android/res/values-v21/styles.xml" target="res/values-v21/styles.xml" />
 	</platform>
 
 	<platform name="amazon-fireos">
@@ -81,9 +91,9 @@
 				<param name="android-package" value="com.hutchind.cordova.plugins.streamingmedia.StreamingMedia" />
 			</feature>
 		</config-file>
-        <resource-file src="src/android/strings.xml" target="res/values/strings.xml" />
 		<config-file target="AndroidManifest.xml" parent="/manifest">
 			<uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 		</config-file>
 		<config-file target="AndroidManifest.xml" parent="/manifest/application">
 			<activity android:configChanges="orientation|screenSize" android:name="com.hutchind.cordova.plugins.streamingmedia.SimpleAudioStream" android:label="Simple Audio Stream"></activity>
@@ -96,5 +106,15 @@
 		<source-file src="src/android/com/hutchind/cordova/plugins/streamingmedia/SimpleVideoStream.java" target-dir="src/com/hutchind/cordova/plugins/streamingmedia" />
 		<source-file src="src/android/com/hutchind/cordova/plugins/streamingmedia/StreamingMedia.java" target-dir="src/com/hutchind/cordova/plugins/streamingmedia" />
 		<source-file src="src/android/com/hutchind/cordova/plugins/streamingmedia/ImageLoadTask.java" target-dir="src/com/hutchind/cordova/plugins/streamingmedia" />
+
+		<resource-file src="src/android/res/drawable/circle_button_sound_notif_shape.xml" target="res/drawable/circle_button_sound_notif_shape.xml" />
+		<resource-file src="src/android/res/drawable-v21/circle_button_sound_notif_shape.xml" target="res/drawable-v21/circle_button_sound_notif_shape.xml" />
+		<resource-file src="src/android/res/drawable-xxhdpi/ic_close_white.png" target="res/drawable-xxhdpi/ic_close_white.png" />
+		<resource-file src="src/android/res/drawable-xxhdpi/ic_pause_white.png" target="res/drawable-xxhdpi/ic_pause_white.png" />
+		<resource-file src="src/android/res/drawable-xxhdpi/ic_play_arrow_white.png" target="res/drawable-xxhdpi/ic_play_arrow_white.png" />
+		<resource-file src="src/android/res/layout/radio_notification.png" target="res/layout/radio_notification.png" />
+		<resource-file src="src/android/res/values/strings.xml" target="res/values/strings.xml" />
+		<resource-file src="src/android/res/values/colors.xml" target="res/values/colors.xml" />
+		<resource-file src="src/android/res/values-v21/styles.xml" target="res/values-v21/styles.xml" />
 	</platform>
 </plugin>
