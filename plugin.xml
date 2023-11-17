@@ -66,9 +66,9 @@
 			<activity android:configChanges="orientation|screenSize" android:name="com.hutchind.cordova.plugins.streamingmedia.SimpleAudioStream" android:label="Simple Audio Stream"></activity>
 			<activity android:configChanges="orientation|screenSize" android:name="com.hutchind.cordova.plugins.streamingmedia.SimpleVideoStream" android:label="Simple Video Stream"></activity>
 		</config-file>
-        <config-file target="res/values/strings.xml" parent="/*">
+        <edit-config file="strings.xml" target="res/values" mode="merge">
             <string name="pick_any_option">Pick any option...</string>
-        </config-file>
+        </edit-config>
         <source-file src="src/android/com/hutchind/cordova/plugins/streamingmedia/MusicConstants.java" target-dir="src/com/hutchind/cordova/plugins/streamingmedia" />
 		<source-file src="src/android/com/hutchind/cordova/plugins/streamingmedia/NetworkHelper.java" target-dir="src/com/hutchind/cordova/plugins/streamingmedia" />
 		<source-file src="src/android/com/hutchind/cordova/plugins/streamingmedia/ForegroundAudioService.java" target-dir="src/com/hutchind/cordova/plugins/streamingmedia" />
