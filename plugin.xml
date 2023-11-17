@@ -79,7 +79,7 @@
 		<resource-file src="src/android/res/drawable-xxhdpi/ic_close_white.png" target="res/drawable-xxhdpi/ic_close_white.png" />
 		<resource-file src="src/android/res/drawable-xxhdpi/ic_pause_white.png" target="res/drawable-xxhdpi/ic_pause_white.png" />
 		<resource-file src="src/android/res/drawable-xxhdpi/ic_play_arrow_white.png" target="res/drawable-xxhdpi/ic_play_arrow_white.png" />
-		<resource-file src="src/android/res/layout/radio_notification.png" target="res/layout/radio_notification.png" />
+		<resource-file src="src/android/res/layout/radio_notification.xml" target="res/layout/radio_notification.png" />
 		<resource-file src="src/android/res/values/strings.xml" target="res/values/strings.xml" />
 		<resource-file src="src/android/res/values/colors.xml" target="res/values/colors.xml" />
 		<resource-file src="src/android/res/values-v21/styles.xml" target="res/values-v21/styles.xml" />
@@ -112,7 +112,7 @@
 		<resource-file src="src/android/res/drawable-xxhdpi/ic_close_white.png" target="res/drawable-xxhdpi/ic_close_white.png" />
 		<resource-file src="src/android/res/drawable-xxhdpi/ic_pause_white.png" target="res/drawable-xxhdpi/ic_pause_white.png" />
 		<resource-file src="src/android/res/drawable-xxhdpi/ic_play_arrow_white.png" target="res/drawable-xxhdpi/ic_play_arrow_white.png" />
-		<resource-file src="src/android/res/layout/radio_notification.png" target="res/layout/radio_notification.png" />
+		<resource-file src="src/android/res/layout/radio_notification.xml" target="res/layout/radio_notification.png" />
 		<resource-file src="src/android/res/values/strings.xml" target="res/values/strings.xml" />
 		<resource-file src="src/android/res/values/colors.xml" target="res/values/colors.xml" />
 		<resource-file src="src/android/res/values-v21/styles.xml" target="res/values-v21/styles.xml" />
