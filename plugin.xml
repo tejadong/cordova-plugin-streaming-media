@@ -61,6 +61,14 @@
 		<config-file target="AndroidManifest.xml" parent="/manifest">
 			<uses-permission android:name="android.permission.INTERNET" />
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+            <uses-permission android:name="android.permission.WAKE_LOCK"/>
+		</config-file>
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <service
+                    android:name="com.hutchind.cordova.plugins.streamingmedia.ForegroundAudioService"
+                    android:enabled="true" >
+            </service>
 		</config-file>
 		<config-file target="AndroidManifest.xml" parent="/manifest/application">
 			<activity android:configChanges="orientation|screenSize" android:name="com.hutchind.cordova.plugins.streamingmedia.SimpleAudioStream" android:label="Simple Audio Stream"></activity>
