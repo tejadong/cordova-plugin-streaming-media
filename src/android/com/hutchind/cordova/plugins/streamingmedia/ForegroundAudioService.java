@@ -220,8 +220,7 @@ public class ForegroundAudioService extends Service implements MediaPlayer.OnErr
     }
 
     private Notification prepareNotification() {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O &&
-                mNotificationManager.getNotificationChannel(FOREGROUND_CHANNEL_ID) == null) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O && mNotificationManager.getNotificationChannel(FOREGROUND_CHANNEL_ID) == null) {
             // The user-visible name of the channel.
             CharSequence name = getString(R.string.text_value_radio_notification);
             int importance = NotificationManager.IMPORTANCE_HIGH;
@@ -234,14 +233,12 @@ public class ForegroundAudioService extends Service implements MediaPlayer.OnErr
         notificationIntent.setAction(MusicConstants.ACTION.MAIN_ACTION);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-      PendingIntent pendingIntent = null;
-      if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-        pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
-      }  else {
-        pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-      }
-
-//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
+        }  else {
+            pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        }
 
         Intent lPauseIntent = new Intent(this, ForegroundAudioService.class);
         lPauseIntent.setAction(MusicConstants.ACTION.PAUSE_ACTION);
@@ -288,20 +285,21 @@ public class ForegroundAudioService extends Service implements MediaPlayer.OnErr
         } else {
             lNotificationBuilder = new NotificationCompat.Builder(this);
         }
+
         lNotificationBuilder
                 .setContent(lRemoteViews)
-//                .setSmallIcon(R.attr.icon)
-//                 .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)
-                .setOnlyAlertOnce(true)
+                .setOnlyAlertOnce(false)
                 .setOngoing(true)
-                .setAutoCancel(true)
+                .setAutoCancel(false)
                 .setContentIntent(pendingIntent);
+
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             lNotificationBuilder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
         }
-        return lNotificationBuilder.build();
 
+        return lNotificationBuilder.build();
     }
 
     @Override
